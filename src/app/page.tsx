@@ -48,6 +48,7 @@ export default function Home() {
         email: employee.email,
         designation: employee.designation,
         reporting_manager: employee.reporting_manager,
+        imageUrl: employee.imageUrl,
         children: children.length > 0 ? children : null,
       };
       tree.push(employeeNode);
