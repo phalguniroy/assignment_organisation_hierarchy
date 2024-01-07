@@ -1,0 +1,67 @@
+
+.header{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+}
+
+.tree-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-x: auto;
+}
+
+.node {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0px -5px 0px #8c4cf6;
+  border-radius: 5px;
+}
+.node > #editIcon{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.node > #profileImage{
+  display: flex;
+  justify-content: center;
+}
+
+.node > p > button{
+  border: none;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 5px;
+  background-color: #f3edfe;
+}
+.children-container {
+  display: flex;
+  border-top: 2px solid black;
+  margin: 0 10px 0 10px;
+
+}
+
+.connector-line {
+  /* bottom: 0; */
+  height: 20px;
+  border-left: 1px solid #4d4d4d;
+  margin: 0 5px;
+  position: absolute;
+  z-index: 0;
+} 
+.connector-line-bottom {
+  width: 0;
+  height: 20px;
+  border-left: 1px solid #030303;
+  position: absolute;
+  left: 50%;
+  z-index: 0;
+} 
+
