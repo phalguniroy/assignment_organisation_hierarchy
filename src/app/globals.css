@@ -1,5 +1,6 @@
 
 .header{
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,10 +8,7 @@
 }
 
 .tree-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  overflow-x: auto;
+  width: fit-content;
 }
 
 .node {
@@ -22,6 +20,7 @@
   z-index: 1;
   box-shadow: 0px -5px 0px #8c4cf6;
   border-radius: 5px;
+  width: fit-content;
 }
 .node > #editIcon{
   width: 100%;
@@ -32,6 +31,11 @@
 .node > #profileImage{
   display: flex;
   justify-content: center;
+}
+.node > p{
+  width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .node > p > button{

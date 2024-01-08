@@ -1,5 +1,8 @@
 import CreateIcon from "@mui/icons-material/Create";
 import Avatar from "@mui/material/Avatar";
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
+import InfoIcon from "@mui/icons-material/Info";
 
 export type Employee = {
   name: string;
@@ -25,10 +28,17 @@ const OrgEmployeeTree = ({
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        position: "relative",
       }}
     >
       {!isRoot && <div className="connector-line" />}
+      {isRoot && <div className="header">
+        <h1>Company Hierarchy</h1>
+        <Tooltip title="Please zoom out to see the tree" placement="top-start">
+          <IconButton>
+            <InfoIcon />
+          </IconButton>
+        </Tooltip>
+      </div>}
       <div className="node">
         <div id="editIcon">
           <CreateIcon height="20px" width="20px" />{" "}

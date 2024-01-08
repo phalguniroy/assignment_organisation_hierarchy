@@ -2,9 +2,6 @@
 import * as React from "react";
 import OrgEmployeeTree, { Employee } from "./OrgEmployeeTree";
 import { useEffect, useState } from "react";
-import IconButton from "@mui/material/IconButton";
-import Tooltip from "@mui/material/Tooltip";
-import InfoIcon from "@mui/icons-material/Info";
 
 export default function Home() {
   const [apiData, setApiData] = useState(null);
@@ -60,18 +57,11 @@ export default function Home() {
   const hierarchicalTree = buildHierarchy(apiData, null);
 
   return (
-    <div>
-      <div className="header">
-        <h1>Company Hierarchy</h1>
-        <Tooltip title="Please zoom out to see the tree" placement="top-start">
-          <IconButton>
-            <InfoIcon />
-          </IconButton>
-        </Tooltip>
-      </div>
+       <div className="container">
       <div className="tree-container">
         <OrgEmployeeTree node={hierarchicalTree[0]} isRoot />
       </div>
     </div>
+   
   );
 }
