@@ -3,6 +3,7 @@ import Avatar from "@mui/material/Avatar";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import InfoIcon from "@mui/icons-material/Info";
+import { useState } from "react";
 
 export type Employee = {
   name: string;
@@ -14,32 +15,40 @@ export type Employee = {
 };
 
 const OrgEmployeeTree = ({
-  node,
-  isRoot = false,
-  key,
-}: {
-  node: Employee;
-  isRoot?: boolean;
-  key?: number;
-}) => {
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
-      {!isRoot && <div className="connector-line" />}
-      {isRoot && <div className="header">
-        <h1>Company Hierarchy</h1>
-        <Tooltip title="Please zoom out to see the tree" placement="top-start">
-          <IconButton>
-            <InfoIcon />
-          </IconButton>
-        </Tooltip>
-      </div>}
-      <div className="node">
+    node,
+    isRoot = false,
+    key,
+  }: {
+    node: Employee;
+    isRoot?: boolean;
+    key?: number;
+  }) => {
+    const [showChildren, setShowChildren] = useState(false);
+  
+    const toggleChildren = () => {
+      setShowChildren(!showChildren);
+    };
+  
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+        {!isRoot && <div className="connector-line" />}
+        {isRoot && (
+          <div className="header">
+            <h1>Company Hierarchy</h1>
+            <Tooltip title='Click on the "Show Children" button to expand the organizational tree starting from the root node' placement="top-start">
+              <IconButton>
+                <InfoIcon />
+              </IconButton>
+            </Tooltip>
+          </div>
+        )}
+        <div className="node">
         <div id="editIcon">
           <CreateIcon height="20px" width="20px" />{" "}
         </div>
@@ -57,22 +66,28 @@ const OrgEmployeeTree = ({
         <div id="details">
         <p><button>Role</button> { node.designation}</p>
         <p><button>Email</button> {node.email}</p>
-        {!isRoot && <p>Reporting Manager: {node.reporting_manager}</p>}
+        {!isRoot && <p><button>Reporting Manager</button> {node.reporting_manager}</p>}
         </div>
         
         
-        {node.children && <div className="connector-line-bottom" />}
+        
+          {node.children && (
+            <button onClick={toggleChildren}>
+              {showChildren ? 'Hide Children' : 'Show Children'}
+            </button>
+          )}
+          {node.children && <div className="connector-line-bottom" />}
+        </div>
+  
+        {showChildren && node.children && (
+          <div className="children-container">
+            {node.children.map((child, index) => (
+              <OrgEmployeeTree key={index} node={child} />
+            ))}
+          </div>
+        )}
       </div>
-
-      {node.children && (
-        <div className="children-container">
-          {node.children.map((child, index) => (
-            <OrgEmployeeTree key={index} node={child} />
-          ))}
-        </div>
-      )}
-    </div>
-  );
-};
-
-export default OrgEmployeeTree;
+    );
+  };
+  
+  export default OrgEmployeeTree;
