@@ -58,6 +58,7 @@ export default function Home() {
 
   return (
        <div className="container">
+        <p>Please zoom out to view the entire tree, including its roots, as horizontal scrolling is enabled. This will allow us to see the complete structure.</p>
       <div className="tree-container">
         <OrgEmployeeTree node={hierarchicalTree[0]} isRoot />
       </div>

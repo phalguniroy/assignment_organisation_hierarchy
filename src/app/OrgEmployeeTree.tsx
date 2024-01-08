@@ -54,9 +54,12 @@ const OrgEmployeeTree = ({
         
 
         <h2>{node.name}</h2>
+        <div id="details">
         <p><button>Role</button> { node.designation}</p>
         <p><button>Email</button> {node.email}</p>
         {!isRoot && <p>Reporting Manager: {node.reporting_manager}</p>}
+        </div>
+        
         
         {node.children && <div className="connector-line-bottom" />}
       </div>

@@ -32,13 +32,17 @@
   display: flex;
   justify-content: center;
 }
-.node > p{
+.node > #details > p{
   width: 100%;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
+.node > #details {
+  text-align: left;
+  padding: 5px;
+}
 
-.node > p > button{
+.node > #details > p > button{
   border: none;
   padding: 10px;
   font-size: 20px;
